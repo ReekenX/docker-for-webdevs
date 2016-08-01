@@ -1,0 +1,2 @@
+http.cors.allow-origin=*
+http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, X-CSRF-Token"
