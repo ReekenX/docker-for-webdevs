@@ -1,0 +1,66 @@
+version: '2'
+services:
+  web:
+    container_name: 'php'
+    build:
+      context: ./apache-php
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - mysql
+      - memcached
+      - redis
+      - elastic17
+    volumes:
+      - ~/Work/docker/storage-for-images/apache-configs:/etc/apache2/sites-enabled
+      - ~/Work/tools/adminer:~/Work/tools/adminer
+    restart: on-failure
+  mysql:
+    container_name: 'mysql'
+    build:
+      context: ./mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ~/Work/docker/storage-for-images/mysql:/var/lib/mysql
+  memcached:
+    container_name: 'memcached'
+    build:
+      context: ./memcached
+    ports:
+      - "11211:11211"
+  redis:
+    container_name: 'redis'
+    build:
+      context: ./redis
+    volumes:
+      - ~/Work/docker/storage-for-images/redis:/data
+    ports:
+      - "6379:6379"
+  elastic17:
+    container_name: 'elastic17'
+    build:
+      context: ./elastic17
+    ports:
+      - "9200:9200"
+    volumes:
+      - ~/Work/docker/storage-for-images/elasticsearch:/usr/share/elasticsearch/data
+  postgres:
+    restart: always
+    container_name: 'postgres'
+    build:
+      context: ./postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - DEBUG=false
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_NAME=
+      - DB_TEMPLATE=
+      - DB_EXTENSION=
+    volumes:
+      - ~/Work/docker/storage-for-images/postgres:/var/lib/postgresql
