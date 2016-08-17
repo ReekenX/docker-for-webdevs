@@ -12,6 +12,7 @@ After installation you will have:
 * memcached
 * redis
 * elasticsearch
+* postgres
 
 ## Installation
 
