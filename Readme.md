@@ -1,32 +1,37 @@
-# Docker LAMP stack environment
+# Docker containers for Web Development
 
-Docker config utilizing [docker-compose] to instantly build and have LAMP environment.
+Docker containers (Apache, PHP, Mysql, Postgres, Memcache, Redis, ElasticSearch) for Web Development.
+
+Uses [docker-compose] to instantly ship you development environment.
+
 After installation you will have:
+
 * apache2
-* php5.5
-* mysql 5.6
+* php
+* mysql
 * memcached
 * redis
 * elasticsearch
 
 ## Installation
 
-1. `git clone https://github.com/ziogas/docker-lamp.git`
-1. Edit `lamp.yaml` file and modify you environment paths in `context` and `volumes` sections.
-1. Remove all the not needed services from `lamp.yaml`
-1. Run `docker-compose -f path/to/lamp.yaml up`
+1. Clone repo.
+2. Check `docker-compose.yml` file and modify you environment paths in `context` and `volumes` sections.
+3. Run `docker-compose up`
 
 ## Usage
 
-After initial build you will be able to fully manage your docker LAMP environment with just two commands: `docker-compose -f path/to/lamp.yaml up` and `docker-compose -f path/to/lamp.yaml down`
+After successful installation check if you can see list of docker containers running `docker ps`.
+
+Normally you should be able to connect into containers with `172.18.0.1` IP.
 
 ## Contributing
 
 1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request
+2. Create your feature branch: `git checkout -b my-new-feature`.
+3. Commit your changes: `git commit -am 'Some feature X'`.
+4. Push to the branch: `git push origin my-new-feature`.
+5. Submit a pull request.
 
 ## License
 
