@@ -34,9 +34,12 @@ Normally you should be able to connect into containers with `172.18.0.1` IP.
 4. Push to the branch: `git push origin my-new-feature`.
 5. Submit a pull request.
 
+Main idea and most of the code I borrowed from [Arminas Žukauskas library called docker-lamp].
+
 ## License
 
 [MIT]
 
 [docker-compose]: https://docs.docker.com/compose/
 [mit]: https://tldrlegal.com/license/mit-license
+[Arminas Žukauskas library called docker-lamp]:https://github.com/ziogas/docker-lamp
