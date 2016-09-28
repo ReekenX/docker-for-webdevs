@@ -4,7 +4,7 @@ Docker containers (Apache, PHP, Mysql, Postgres, Memcache, Redis, ElasticSearch)
 
 Uses [docker-compose] to instantly ship you development environment.
 
-After installation you will have:
+After installation you will have (optional):
 
 * apache2
 * php
@@ -16,9 +16,18 @@ After installation you will have:
 
 ## Installation
 
-1. Clone repo.
-2. Check `docker-compose.yml` file and modify you environment paths in `context` and `volumes` sections.
-3. Run `docker-compose up`
+1. Clone repo (git clone https://github.com/ReekenX/docker-for-webdevs.git)
+2. Check `docker-compose.yml` and extend with `docker-compose.override.yml` like that:
+
+    version: '2'
+    services:
+      web:
+        volumes:
+          - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
+          - /home/remigijus/Work:/home/remigijus/Work
+
+3. Run `docker-compose up`.
+4. Enjoy it!
 
 ## Usage
 
@@ -34,7 +43,7 @@ Normally you should be able to connect into containers with `172.18.0.1` IP.
 4. Push to the branch: `git push origin my-new-feature`.
 5. Submit a pull request.
 
-Main idea and most of the code I borrowed from [Arminas Žukauskas library called docker-lamp].
+This setup originally was created by [Arminas Žukauskas library called docker-lamp], but I extended/changed it to suit my own needs.
 
 ## License
 
