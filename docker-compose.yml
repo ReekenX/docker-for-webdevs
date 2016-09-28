@@ -13,8 +13,8 @@ services:
       - redis
       - elastic17
     volumes:
-      - ~/Work/docker/storage-for-images/apache-configs:/etc/apache2/sites-enabled
-      - ~/Work/tools/adminer:~/Work/tools/adminer
+      - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
+    dns: 8.8.8.8
     restart: on-failure
   mysql:
     container_name: 'mysql'
@@ -26,10 +26,12 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ~/Work/docker/storage-for-images/mysql:/var/lib/mysql
+    dns: 8.8.8.8
   memcached:
     container_name: 'memcached'
     build:
       context: ./memcached
+    dns: 8.8.8.8
     ports:
       - "11211:11211"
   redis:
@@ -38,6 +40,7 @@ services:
       context: ./redis
     volumes:
       - ~/Work/docker/storage-for-images/redis:/data
+    dns: 8.8.8.8
     ports:
       - "6379:6379"
   elastic17:
@@ -48,6 +51,7 @@ services:
       - "9200:9200"
     volumes:
       - ~/Work/docker/storage-for-images/elasticsearch:/usr/share/elasticsearch/data
+    dns: 8.8.8.8
   postgres:
     restart: always
     container_name: 'postgres'
