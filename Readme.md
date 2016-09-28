@@ -18,14 +18,6 @@ After installation you will have (optional):
 
 1. Clone repo (git clone https://github.com/ReekenX/docker-for-webdevs.git)
 2. Check `docker-compose.yml` and extend with `docker-compose.override.yml` like that:
-
-    version: '2'
-    services:
-      web:
-        volumes:
-          - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
-          - /home/remigijus/Work:/home/remigijus/Work
-
 3. Run `docker-compose up`.
 4. Enjoy it!
 
