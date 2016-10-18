@@ -20,6 +20,7 @@ RUN apt-get install -y --force-yes --fix-missing \
     imagemagick \
     php-mongo \
     php-mongodb \
+    php5.6-mbstring \
     php5.6-mysql \
     php5.6-mcrypt \
     php5.6-curl \
