@@ -1,21 +1,22 @@
-FROM tutum/apache-php
-MAINTAINER Arminas Zukauskas <arminas@ini.lt>
-LABEL Description="Apache/php" Vendor="ini" Version="1.0"
+FROM ubuntu:trusty
+MAINTAINER Remigijus Jarmalavičius <dev@jarmalavicius.lt>
+LABEL Description="Apache/PHP" Vendor="ini" Version="1.0"
 
-ENV ALLOW_OVERRIDE=true
+# Update the system packages cache
+RUN apt-get update
 
-# Update the system
-RUN apt-get update \
-    && apt-get -y upgrade \
-    && apt-get install -y language-pack-en python-software-properties software-properties-common build-essential
+# Update packages needed to install custom PHP version
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq language-pack-en python-software-properties software-properties-common build-essential
 
+# Install PPA which has list of PHP versions
 RUN LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
     && apt-get upgrade -y --force-yes
 
-# install php with a set of most widely used extensions
-RUN apt-get install -y --force-yes --fix-missing \
-    vim \
+# Install packages needed for web development (aka LAMP)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes --fix-missing \
+    apache2 \
+    libapache2-mod-php5.6 \
     mysql-client \
     imagemagick \
     php-mongo \
@@ -35,9 +36,16 @@ RUN apt-get install -y --force-yes --fix-missing \
     php5.6-memcached \
     php-xml-dtd \
     php-xml-rpc \
-    php-xml-serializer
+    php-xml-serializer \
+    vim
 
 RUN a2enmod rewrite ssl expires headers
 
 ADD configs/php.ini /etc/php5/apache2/conf.d/php.ini
 ADD configs/php.ini /etc/php5/cli/conf.d/php.ini
+
+ADD run.sh /run.sh
+RUN chmod 755 /run.sh
+
+EXPOSE 80
+CMD ["/run.sh"]
