@@ -15,7 +15,7 @@ services:
     volumes:
       - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
     dns: 8.8.8.8
-    restart: on-failure
+    restart: always
   mysql:
     container_name: 'mysql'
     build:
@@ -27,6 +27,7 @@ services:
     volumes:
       - ~/Work/docker/storage-for-images/mysql:/var/lib/mysql
     dns: 8.8.8.8
+    restart: always
   memcached:
     container_name: 'memcached'
     build:
@@ -34,6 +35,7 @@ services:
     dns: 8.8.8.8
     ports:
       - "11211:11211"
+    restart: always
   redis:
     container_name: 'redis'
     build:
@@ -43,6 +45,7 @@ services:
     dns: 8.8.8.8
     ports:
       - "6379:6379"
+    restart: always
   elastic17:
     container_name: 'elastic17'
     build:
@@ -52,8 +55,8 @@ services:
     volumes:
       - ~/Work/docker/storage-for-images/elasticsearch:/usr/share/elasticsearch/data
     dns: 8.8.8.8
-  postgres:
     restart: always
+  postgres:
     container_name: 'postgres'
     build:
       context: ./postgres
@@ -67,4 +70,5 @@ services:
       - DB_TEMPLATE=
       - DB_EXTENSION=
     volumes:
-      - ~/Work/docker/storage-for-images/postgres:/var/lib/postgresql
+      - /home/remigijus/Work/docker/storage-for-images/postgres:/var/lib/postgresql
+    restart: always
