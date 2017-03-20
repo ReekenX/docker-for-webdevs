@@ -53,8 +53,8 @@ services:
     build:
       context: ./elastic17
     ports:
-    volumes:
       - "9200:9200"
+    volumes:
       - ~/Work/docker/storage-for-images/elasticsearch:/usr/share/elasticsearch/data
     dns: 8.8.8.8
   postgres:
