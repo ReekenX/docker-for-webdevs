@@ -9,7 +9,7 @@ services:
   apache:
     container_name: apache
     build:
-      context: ./apache-php
+      context: ./apache
     ports:
       - "80:80"
       - "443:443"
