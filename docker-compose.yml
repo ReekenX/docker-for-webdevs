@@ -1,16 +1,13 @@
 version: '2'
 services:
   ubuntu:
-    container_name: 'ubuntu'
+    container_name: ubuntu
     build:
       context: ./ubuntu
-    ports:
-      - "80:80"
-      - "443:443"
     dns: 8.8.8.8
     restart: always
   apache:
-    container_name: 'apache'
+    container_name: apache
     build:
       context: ./apache-php
     ports:
@@ -25,7 +22,7 @@ services:
       - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
     dns: 8.8.8.8
   mysql:
-    container_name: 'mysql'
+    container_name: mysql
     build:
       context: ./mysql
     ports:
@@ -36,14 +33,14 @@ services:
       - ~/Work/docker/storage-for-images/mysql:/var/lib/mysql
     dns: 8.8.8.8
   memcached:
-    container_name: 'memcached'
+    container_name: memcached
     build:
       context: ./memcached
     dns: 8.8.8.8
     ports:
       - "11211:11211"
   redis:
-    container_name: 'redis'
+    container_name: redis
     build:
       context: ./redis
     volumes:
@@ -52,16 +49,16 @@ services:
     ports:
       - "6379:6379"
   elastic17:
-    container_name: 'elastic17'
+    container_name: elastic17
     build:
       context: ./elastic17
     ports:
-      - "9200:9200"
     volumes:
+      - "9200:9200"
       - ~/Work/docker/storage-for-images/elasticsearch:/usr/share/elasticsearch/data
     dns: 8.8.8.8
   postgres:
-    container_name: 'postgres'
+    container_name: postgres
     build:
       context: ./postgres
     ports:
