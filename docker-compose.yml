@@ -4,6 +4,8 @@ services:
     container_name: ubuntu
     build:
       context: ./ubuntu
+    volumes:
+      - /dev/log:/dev/log
     dns: 8.8.8.8
     restart: always
   apache:
