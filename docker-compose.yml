@@ -1,13 +1,5 @@
 version: '2'
 services:
-  ubuntu:
-    container_name: ubuntu
-    build:
-      context: ./ubuntu
-    volumes:
-      - /dev/log:/dev/log
-    dns: 8.8.8.8
-    restart: always
   apache:
     container_name: apache
     build:
