@@ -24,7 +24,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ~/Work/docker/storage-for-images/mysql:/var/lib/mysql
+      - ./storage-for-images/mysql:/var/lib/mysql
     dns: 8.8.8.8
   memcached:
     container_name: memcached
@@ -38,7 +38,7 @@ services:
     build:
       context: ./redis
     volumes:
-      - ~/Work/docker/storage-for-images/redis:/data
+      - ./storage-for-images/redis:/data
     dns: 8.8.8.8
     ports:
       - "127.0.0.1:6379:6379"
@@ -49,7 +49,7 @@ services:
     ports:
       - "127.0.0.1:9200:9200"
     volumes:
-      - ~/Work/docker/storage-for-images/elasticsearch:/usr/share/elasticsearch/data
+      - ./storage-for-images/elasticsearch:/usr/share/elasticsearch/data
     dns: 8.8.8.8
   postgres:
     container_name: postgres
@@ -65,4 +65,4 @@ services:
       - DB_TEMPLATE=
       - DB_EXTENSION=
     volumes:
-      - /home/remigijus/Work/docker/storage-for-images/postgres:/var/lib/postgresql
+      - ./storage-for-images/postgres:/var/lib/postgresql
