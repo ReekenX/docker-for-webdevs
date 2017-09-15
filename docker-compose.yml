@@ -7,11 +7,6 @@ services:
     ports:
       - "127.0.0.1:80:80"
       - "127.0.0.1:443:443"
-    depends_on:
-      - mysql
-      - memcached
-      - redis
-      - elastic17
     volumes:
       - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
     dns: 8.8.8.8
