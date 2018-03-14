@@ -1,42 +1,30 @@
-FROM ubuntu:trusty
-MAINTAINER Remigijus Jarmalavičius <dev@jarmalavicius.lt>
-LABEL Description="Apache/PHP" Vendor="ini" Version="1.0"
+FROM ubuntu:artful
 
 # Update the system packages cache
 RUN apt-get update
 
 # Update packages needed to install custom PHP version
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq language-pack-en python-software-properties software-properties-common build-essential
-
-# Install PPA which has list of PHP versions
-RUN LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php \
-    && apt-get update \
-    && apt-get upgrade -y --force-yes
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --fix-missing language-pack-en python-software-properties software-properties-common build-essential
 
 # Install packages needed for web development (aka LAMP)
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --force-yes --fix-missing \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --fix-missing \
     apache2 \
-    libapache2-mod-php5.6 \
+    libapache2-mod-php7.1 \
     mysql-client \
     imagemagick \
-    php-mongo \
-    php-mongodb \
-    php5.6-mbstring \
-    php5.6-mysql \
-    php5.6-mcrypt \
-    php5.6-curl \
-    php5.6-cli \
-    php5.6-gd \
-    php5.6-cli \
-    php5.6-json \
-    php5.6-imagick \
-    php5.6-xsl \
-    php5.6-memcached \
-    php5.6-imap \
-    php5.6-memcached \
-    php-xml-dtd \
-    php-xml-rpc \
-    php-xml-serializer \
+    php7.1-mbstring \
+    php7.1-mysql \
+    php7.1-mcrypt \
+    php7.1-curl \
+    php7.1-cli \
+    php7.1-gd \
+    php7.1-cli \
+    php7.1-json \
+    php7.1-imagick \
+    php7.1-xsl \
+    php7.1-memcached \
+    php7.1-imap \
+    php7.1-memcached \
     vim
 
 RUN a2enmod rewrite ssl expires headers
