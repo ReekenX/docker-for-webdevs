@@ -28,8 +28,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --fix-missing \
 
 RUN a2enmod rewrite ssl expires headers
 
-ADD configs/php.ini /etc/php5/apache2/conf.d/php.ini
-ADD configs/php.ini /etc/php5/cli/conf.d/php.ini
+ADD configs/php.ini /etc/php/7.1/cli/php.ini
+ADD configs/php.ini /etc/php/7.1/apache2/php.ini
 
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
