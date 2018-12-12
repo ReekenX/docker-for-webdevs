@@ -48,8 +48,7 @@ services:
     dns: 8.8.8.8
   postgres:
     container_name: postgres
-    build:
-      context: ./postgres
+    image: postgres:10.4
     ports:
       - "127.0.0.1:5432:5432"
     environment:
