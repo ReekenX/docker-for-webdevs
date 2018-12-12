@@ -24,6 +24,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --fix-missing \
     php7.1-xsl \
     php7.1-memcached \
     php7.1-imap \
+    php7.1-zip \
     vim
 
 RUN a2enmod rewrite ssl expires headers

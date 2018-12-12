@@ -5,7 +5,7 @@ services:
     build:
       context: ./apache
     ports:
-      - "127.0.0.1:80:80"
+      - "0.0.0.0:80:80"
       - "127.0.0.1:443:443"
     volumes:
       - ./storage-for-images/apache-configs:/etc/apache2/sites-enabled
