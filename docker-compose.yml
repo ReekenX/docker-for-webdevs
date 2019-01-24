@@ -12,12 +12,13 @@ services:
     dns: 8.8.8.8
   mysql:
     container_name: mysql
-    build:
-      context: ./mysql
+    image: mysql:8
+    command: mysqld --sql_mode=""
     ports:
       - "127.0.0.1:3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
+      TZ: 'Europe/Vilnius'
     volumes:
       - ./storage-for-images/mysql:/var/lib/mysql
     dns: 8.8.8.8
@@ -59,4 +60,4 @@ services:
       - DB_TEMPLATE=
       - DB_EXTENSION=
     volumes:
-      - ./storage-for-images/postgres:/var/lib/postgresql
+      - ./storage-for-images/postgres:/var/lib/postgresql/data
